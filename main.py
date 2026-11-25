@@ -14,6 +14,8 @@ MAX_CHARS = 100
 def main() -> None:
     if not 1 <= len(ENTRY) <= MAX_CHARS:
         raise ValueError("entry must be 1-100 characters")
+    if ENTRY != ENTRY.strip() or "\n" in ENTRY:
+        raise ValueError("entry must be a single line with no surrounding whitespace")
     out_dir = Path("/output")
     out_dir.mkdir(parents=True, exist_ok=True)
     target = out_dir / "entry.txt"
